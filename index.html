@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Online Purchase Form</title>
+    <!-- Add the Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1@dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+               <div class="card-body">
+                 <a href="UpdateShipmentWebhookForm.html">Update Shipment WebhookForm</a>
+                 </div>
+                <form id="onlinePurchaseForm">
+                     <h5 style="font-weight:bold">Get Authorization Key:</h5>
+                    <div class="row">
+                        <div class="col-md-4" style="padding-right: 0px;">
+                            <div class="form-group">
+                                <label for="authorizationkey">Email</label>
+                                <input type="text" class="form-control" id="authorizationkey" name="authorizationkey" placeholder="Enter Your Email ID" style="padding-right: 84px; font-size: 13.08px;" required>
+                                <br><!-- comment -->
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="getKey" onclick="getAuthorizationKey()">Get Key</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        </div>
+                     <br>
+                     <h5 style="font-weight:bold">Header</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="authorization">Authorization:</label>
+                                <input type="text" class="form-control" id="authorization" name="authorization" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="papgid">PAPGID:</label>
+                                <input type="text" class="form-control" id="papgid" name="papgid" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="ppid">PPID:</label>
+                                <input type="text" class="form-control" id="ppid" name="ppid" required>
+                            </div>
+                        </div>
+                    </div>
+                     <br><!-- comment -->
+                    <h5 style="font-weight:bold">Online Purchase</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                             <label for="clientMerchantId">Client Merchant ID:</label>
+                             <div class="input-group">
+                                 <input type="text" class="form-control" id="clientMerchantId" name="clientMerchantId" required>
+                                 <div class="input-group" >
+                                     <button class="button" type="button" onclick="generateAlphanumericKey(10)" style="padding-bottom: 7.2;padding-left: 0px;padding-right: 0px;padding-top: 10.2;padding-top: 0px;padding-bottom: 0px;margin-left: 267px;margin-top: -37px;margin-right: 0px;">
+                                         <svg viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                         <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+                                         <path d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" fill-rule="evenodd"></path>
+                                         </svg>
+                                     </button>
+                                 </div>
+                             </div>
+                        </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="clientPurchaseID">Client Purchase ID:</label>
+                                <input type="text" class="form-control" id="clientPurchaseID" name="clientPurchaseID" required>
+                                <div class="input-group" >
+                                   <button class="button" type="button" onclick="generateAlphanumericKey1(10)" style="padding-bottom: 7.2;padding-left: 0px;padding-right: 0px;padding-top: 10.2;padding-top: 0px;padding-bottom: 0px;margin-left: 267px;margin-top: -37px;margin-right: 0px;">
+                                         <svg viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                         <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+                                         <path d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" fill-rule="evenodd"></path>
+                                         </svg>
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="currency">Currency:</label>
+                                <input type="text" class="form-control" id="currency" name="currency" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="custPincode">Customer Pincode:</label>
+                                <input type="number" class="form-control" id="custPincode" name="custPincode" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="numberOfItems">Number of Items:</label>
+                                <input type="number" class="form-control" id="numberOfItems" name="numberOfItems" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="purchaseValue">Purchase Value:</label>
+                                <input type="number" class="form-control" id="purchaseValue" name="purchaseValue" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 style="font-weight:bold;padding-top: 17px;">Online Purchase Item</h5>
+                    <div id="onlinePurchaseItemContainer">
+                        <div class="onlinePurchaseItem form-group row">
+                            <div class="col-md-4 ">
+                                <label for="clientItemID">Client Item ID:</label>
+                                <input type="text" class="form-control" id="clientItemID" name="clientItemID[]" required>
+                                <div class="input-group" >
+                                    <button class="button" type="button" onclick="generateAlphanumericKey2(10)" style="padding-bottom: 7.2;padding-left: 0px;padding-right: 0px;padding-top: 10.2;padding-top: 0px;padding-bottom: 0px;margin-left: 267px;margin-top: -37px;margin-right: 0px;">
+                                         <svg viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                         <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+                                         <path d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" fill-rule="evenodd"></path>
+                                         </svg>
+                                     </button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="itemDesc">Item Description:</label>
+                                <input type="text" class="form-control" name="itemDesc[]" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="itemName">Item Name:</label>
+                                <input type="text" class="form-control" name="itemName[]" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="itemQuantity">Item Quantity:</label>
+                                <input type="number" class="form-control" name="itemQuantity[]" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="itemRate">Item Rate:</label>
+                                <input type="number" class="form-control" name="itemRate[]" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="itemTotalAmount">Item Total Amount:</label>
+                                <input type="number" class="form-control" name="itemTotalAmount[]" required>
+                            </div>
+
+<!--                            <div class="col-md-4">
+                                <button type="button" class="btn btn-danger btn-sm mt-2" onclick="removeItem(this)">Remove</button>
+                            </div>-->
+                        </div>
+                    </div>
+                    <br>
+                     <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button type="button" class="btn btn-primary"  style="padding-left: 0;padding-right: 0px; padding-top: 0px;padding-bottom: 0px;" onclick="addNewItem()">Add New Item</button>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <span align="left" id="mess"></span>
+                    <br>
+                    <br>
+                    <div class="mt-4">
+                <div class="row w-100 m-0">
+                    <button type="button" class="btn btn-success" id="callButton" onclick="callDirectPurchase()" value="Submit">Submit</button>
+                </div>
+                    </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add the Bootstrap JS and jQuery links -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+    <style>
+        label {
+            margin-top: 8px;
+        }
+        body{
+            font-size: 0.8125rem;
+        }
+        /* Custom CSS */
+.button {
+    color: white;
+    background-color: #007bff;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    font-size: 13.08px;
+    line-height: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    text-align: center;
+    margin-right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+  }
+  .input-group-append {
+    margin-left: 267px;
+    margin-top: -57px;
+}
+
+  .button:hover {
+    background-color: #007bff;
+  }
+  .form-control {
+      font-size: -0.09rem;
+  }
+
+  .button svg {
+    display: inline;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: 0.75rem;
+    color: white;
+  }
+
+  .button:focus svg {
+    animation: spin_357 0.5s linear;
+  }
+
+  @keyframes spin_357 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .input-group{
+      flex-direction: row-reverse;
+  }
+
+    </style>
+
+    <script>
+        function addNewItem() {
+            debugger;
+        const container = document.getElementById("onlinePurchaseItemContainer");
+        const originalItemDiv = container.querySelector(".onlinePurchaseItem");
+        const newItemDiv = originalItemDiv.cloneNode(true);
+        container.appendChild(newItemDiv);
+        
+        debugger;
+        const removeButton = document.createElement("button");
+        debugger;
+        removeButton.type = "button";
+        removeButton.classList.add("btn", "btn-danger", "btn-sm", "mt-2");
+        removeButton.textContent = "Remove Item";
+        removeButton.onclick = function () {
+            container.removeChild(newItemDiv);
+            updateNumberOfItems();
+        };
+
+        newItemDiv.appendChild(removeButton);
+    }
+
+    function removeItem(button) {
+        debugger;
+        const container = document.getElementById("onlinePurchaseItemContainer");
+        container.removeChild(button.parentNode);
+    }
+    
+    
+      function generateAlphanumericKey(length) {
+          debugger;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let key = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    key += characters[randomIndex];
+  }
+
+   $("#clientMerchantId").val(key);
+   
+}
+ function generateAlphanumericKey1(length) {
+          debugger;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let key = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    key += characters[randomIndex];
+  }
+
+
+   $("#clientPurchaseID").val(key);
+
+}
+ function generateAlphanumericKey2(length) {
+          debugger;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let key = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    key += characters[randomIndex];
+  }
+
+ 
+   $("#clientItemID").val(key);
+}
+
+function showLoader(){
+    debugger;
+        var button = document.getElementById("callButton");
+        button.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading...';
+        button.disabled = true;
+    }
+    function hideLoader() {
+    var button = document.getElementById("callButton");
+     button.innerHTML = 'Submit';
+     button.disabled = false; 
+}
+ 
+    </script>
+    
+    <script>
+         function callDirectPurchase() {
+     event.preventDefault();
+//     showLoader();
+            // Retrieve form data
+            debugger;
+            const onlinePurchase = {
+                clientMerchantId: document.getElementById("clientMerchantId").value,
+                clientPurchaseID: document.getElementById("clientPurchaseID").value,
+                currency: document.getElementById("currency").value,
+                custPincode: parseInt(document.getElementById("custPincode").value),
+                numberOfItems: parseInt(document.getElementById("numberOfItems").value),
+                purchaseValue: parseFloat(document.getElementById("purchaseValue").value)
+            };
+
+            const onlinePurchaseItem = [];
+            const itemContainers = document.querySelectorAll(".onlinePurchaseItem");
+            itemContainers.forEach((container) => {
+                debugger;
+                const item = {
+                    clientItemID: container.querySelector("[name='clientItemID[]']").value,
+                    itemDesc: container.querySelector("[name='itemDesc[]']").value,
+                    itemName: container.querySelector("[name='itemName[]']").value,
+                    itemQuantity: parseInt(container.querySelector("[name='itemQuantity[]']").value),
+                    itemRate: parseFloat(container.querySelector("[name='itemRate[]']").value),
+                    itemTotalAmount: parseFloat(container.querySelector("[name='itemTotalAmount[]']").value)
+                };
+                onlinePurchaseItem.push(item);
+            });
+
+            const data = {
+                onlinePurchase: onlinePurchase,
+                onlinePurchaseItem: onlinePurchaseItem
+            };
+            
+            const authorizationHeader = document.getElementById("authorization").value;
+            const papgidHeader = document.getElementById("papgid").value;
+            const ppidHeader = document.getElementById("ppid").value;
+
+             var lAjax = new Ajax();
+             debugger;
+             lAjax.setUrl('http://localhost:8080/Pruf/PrufController/directOnlinePurchase');
+             lAjax.setSync(true);
+             lAjax.setType("POST");
+             lAjax.setDataType("json");
+             lAjax.setHeader("Content-Type", "application/json; charset=utf-8");
+             lAjax.setHeader("authorization", authorizationHeader);
+             lAjax.setHeader("papgid", papgidHeader);
+             lAjax.setHeader("ppid", ppidHeader);
+             lAjax.setData(JSON.stringify(data));
+             lAjax.addEventListener('success', function (response) {
+             debugger;
+             console.info(response);
+            const jsonResponse = typeof response === 'object' ? response : JSON.parse(response);
+            if(response.Flag===false)
+            {
+                const message = response.Message; 
+                $('#mess').addClass('success').removeClass('error').css('color', 'red').text(message);
+//                hideLoader();
+            }else{
+          const redirectLink = jsonResponse.response.RedirectLink;
+          console.log("Redirect Link:", redirectLink);
+      $('#mess').addClass('success').removeClass('error').css('color', 'green').text(redirectLink);
+       showToast("Success", "Order Receved successfully.", "success");
+//      hideLoader();
+  }
+    });
+    lAjax.addEventListener('error', function (textStatus, errorThrown) {
+        alert("Error : " + textStatus + " - " + errorThrown);
+    });
+
+    lAjax.execute(); 
+    }
+
+ 
+ function  getAuthorizationKey(){
+     event.preventDefault();
+     debugger;
+     const email = document.getElementById("authorizationkey").value;
+     const data = {
+          uName: email
+      };
+     var lAjax = new Ajax();
+             debugger;
+             lAjax.setUrl('http://localhost:8080/Pruf/PrufController/getEncryptionKey');
+             lAjax.setSync(true);
+             lAjax.setType("POST");
+             lAjax.setDataType("json");
+             lAjax.setHeader("Content-Type", "application/json; charset=utf-8");
+             lAjax.setData(JSON.stringify(data));
+             lAjax.addEventListener('success', function (response) {
+                 debugger;
+                 console.log(response);
+//                 const jsonResponse = typeof response === 'object' ? response : JSON.parse(response);
+                  const papgid =response.PAPG;   
+                  const ppid = response.PPID;   
+                  const auth =response.USER;   
+                 $("#authorization").val(auth);
+                 $("#papgid").val(papgid);
+                 $("#ppid").val(ppid);
+                 });
+             
+             lAjax.addEventListener('error', function (textStatus, errorThrown) {
+        alert("Error : " + textStatus + " - " + errorThrown);
+    });
+
+    lAjax.execute(); 
+ }      
+    </script>    
+    <script src="libs/jquery.js"></script>
+    <script src="plibs/Ajax.js"></script>
+</body>
+
+</html>
